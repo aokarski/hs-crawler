@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'groovy'
+//    id 'application'
+    id 'org.springframework.boot' version '2.6.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+sourceCompatibility = '17'
+group 'it.highersoft.crawler'
+version '1.0-SNAPSHOT'
+
+jar {
+    baseName 'crawler'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('testcontainersVersion', "1.16.2")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation 'org.testcontainers:mongodb'
+    testImplementation 'org.codehaus.groovy:groovy'
+    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+//    testImplementation 'org.codehaus.groovy:groovy:3.0.9'
+//    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+//    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+//    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+}
+
+//application {
+//    mainClass = 'it.highersoft.crawler.App'
+//}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
