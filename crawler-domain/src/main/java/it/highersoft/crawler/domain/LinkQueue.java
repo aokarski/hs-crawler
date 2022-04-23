@@ -1,9 +1,9 @@
 package it.highersoft.crawler.domain;
 
-import java.util.Optional;
-import java.util.Set;
+import it.highersoft.crawler.domain.Link;
 
-public interface LinksQueue {
+import java.util.Optional;
+
+public interface LinkQueue {
     Optional<Link> poll();
-    void queueLinks(Set<Link> links);
 }

@@ -7,6 +7,7 @@ repositories {
 }
 
 dependencies {
+    implementation project(":crawler-domain")
     implementation 'org.slf4j:slf4j-api:1.7.36'
 
     compileOnly 'org.projectlombok:lombok:1.18.22'

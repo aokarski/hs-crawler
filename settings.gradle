@@ -1,4 +1,5 @@
 rootProject.name = 'hs-crawler'
 include 'crawler'
 include 'worker'
+include 'crawler-domain'
 
